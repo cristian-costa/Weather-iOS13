@@ -15,6 +15,8 @@ class WeatherViewController: UIViewController{
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var maxLabel: UILabel!
     
     var weatherManager = WeatherManager()
     var locationManager = CLLocationManager()
@@ -98,8 +100,9 @@ extension WeatherViewController: WeatherManagerDelegate {
             self.temperatureLabel.text = weather.temperatureString
             self.cityLabel.text = weather.cityName
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+            self.minLabel.text = "Min: \(weather.minTemperatureString)°"
+            self.maxLabel.text = "Max: \(weather.maxTemperatureString)°"
         }
-        
     }
     
     func didFailWithError(error: Error) {
